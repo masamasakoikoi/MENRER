@@ -35,13 +35,13 @@ Rails.application.routes.draw do
     resources :posts ,only:[:index, :show, :new, :edit]
     post 'posts' => 'posts#create'
     
-    get 'relationships/followings'
-    get 'relationships/followers'
+    # get 'relationships/followings'
+    # get 'relationships/followers'
   
     resources :users ,only:[:index, :show, :edit, :update] do
       resource :relationships,only:[:create, :destroy]
-        get 'followings' => 'relationships#followings', as: 'followings'
-        get 'followers' => 'relationships#followers', as: 'followers'
+          get 'followings' => 'relationships#followings', as: 'followings'
+          get 'followers' => 'relationships#followers', as: 'followers'
         get 'users/unsubscribe'
     end
   end
