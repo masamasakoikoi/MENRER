@@ -1,7 +1,6 @@
 class Public::UsersController < ApplicationController
   def index
-     binding.pry
-    @user = User.find(params[:id])
+    @users = User.all
   end
 
   def show

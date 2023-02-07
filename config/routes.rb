@@ -33,7 +33,8 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     
     resources :posts ,only:[:index, :show, :new, :edit]
-  
+    post 'posts' => 'posts#create'
+    
     get 'relationships/followings'
     get 'relationships/followers'
   

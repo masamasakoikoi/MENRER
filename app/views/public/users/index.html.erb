@@ -1,5 +1,21 @@
 <h1>会員一覧</h1>
-<p>Find me in app/views/public/users/index.html.erb</p>
-    <% @user.each do |user| %>
-        <p><%= user.last_name %></p>
-    <% end %>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>氏名</th>
+          <th>フォロー数</th>
+          <th>フォロワー数</th>
+          <th>フォローする/外す</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td>氏名：<%= user.last_name %><%= user.first_name %></td>
+            <td>フォロー数表示</td>
+            <td>フォロワー数表示</td>
+            <td colspan="3"></td>
+        <% end %>
+          </tr>
+      </tbody>
+    </table>
