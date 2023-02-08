@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     
+    # patch 'users/id' => "users#edit", as: "edit"
+    
     resources :posts ,only:[:index, :show, :new, :edit]
     post 'posts' => 'posts#create'
     
@@ -39,29 +41,14 @@ Rails.application.routes.draw do
     get 'relationships/followers'
   
     resources :users ,only:[:index, :show, :edit, :update] do
+      get 'users/unsubscribe'
+      
+      
       resource :relationships,only:[:create, :destroy]
           get 'followings' => 'relationships#followings', as: 'followings'
           get 'followers' => 'relationships#followers', as: 'followers'
-        get 'users/unsubscribe'
+          
     end
   end
 
-
-  # #admin
-  # namespace :admin do
-  #   get 'homes/top' => "homes#top", as:"top"
-  #   #unsubscribeのルーティングを追加する
-  #   #statusのルーティング追加する
-  #   resources users ,only:[:index]
-  #   resources posts ,only:[:index]
-  #   resources genres,only:[:index, :create, :edit, :update]
-  # end
-  
-  
-  # #public
-  # root to: 'homes#top'
-  # scope module: :public do
-  #   resources users ,only:[:index, :show, :edit, :update, :index]
-  #   resources posts
-  # end
 end

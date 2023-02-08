@@ -1,3 +1,4 @@
 class Genre < ApplicationRecord
-    belongs_to :post_genre
+    has_many :post_genres
+    has_many :posts, through: :posts_genres
 end

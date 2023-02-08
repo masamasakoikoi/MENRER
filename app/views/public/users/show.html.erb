@@ -1,2 +1,39 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<h3><%= @user.last_name %>
+    <%= @user.first_name %>さんの会員詳細</h3>
+<table style="table">
+    <tr>
+        <th>
+            <p>氏名</p>
+        </th>
+        <td>
+            <p><%= @user.last_name %>
+               <%= @user.first_name %></p>
+        </td>
+        <td>
+            <%= link_to "編集する", edit_user_path, class:"btn btn-sm btn-success" %>
+        </td>
+    </tr>
+    
+    <tr>
+        <th>
+            <p>フォロー数</p>
+        </th>
+        <td>
+            <p><%= @user.followings.count %></p>
+        </td>
+    </tr>
+    
+    <tr>
+        <th>
+            <p>フォロワー数</p>
+        </th>
+        <td>
+            <p><%= @user.followers.count %></p>
+        </td>
+    </tr>
+</table>
+
+
+<h3><%= @user.last_name %>
+    <%= @user.first_name %>さんの投稿一覧</h3>
+    作成中

@@ -4,11 +4,11 @@ class Public::PostsController < ApplicationController
   end
 
   def show
+    # @post = Post.find(params[:id])
   end
 
   def new
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = Post.new
   end
 
   def edit
@@ -16,9 +16,10 @@ class Public::PostsController < ApplicationController
   
   def create
     @post = Post.new(post_params)
-    @post.save
+    @post.user_id = current_user.id
     # binding.pry
-    redirect_to '/posts'
+    @post.save
+    redirect_to posts_path
   end
   
   private

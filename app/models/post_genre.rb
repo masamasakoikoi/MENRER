@@ -1,4 +1,4 @@
 class PostGenre < ApplicationRecord
-    has_many :post
-    has_many :genre
+    belongs_to :post
+    belongs_to :genre
 end
