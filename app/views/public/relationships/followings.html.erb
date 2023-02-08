@@ -1,18 +1,19 @@
 <% if @users.exists? %>
+<h2>フォローしているユーザー</h2>
     <% @users.each do |user| %>
         <table>
             <thead>
                 <tr>
-                    <th>name</th>
-                    <th></th>
-                    <th></th>
+                    <th>氏名</th>
+                    <th>フォロー</th>
+                    <th>フォロワー</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><%= user.last_name %></td>
-                    <td>フォロー数<%= user.followings.count %></td>
-                    <td>フォロワー数<%= user.followers.count %></td>
+                    <td><%= user.last_name %><%= user.first_name %></td>
+                    <td><%= user.followings.count %></td>
+                    <td><%= user.followers.count %></td>
                 </tr>
             </tbody>
         </table>
