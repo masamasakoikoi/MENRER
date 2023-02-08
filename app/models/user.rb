@@ -11,7 +11,8 @@ class User < ApplicationRecord
     end
   end
   
-  has_many :post
+  has_many :posts, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   
   #フォローした、されたの関係
   has_many :user_relationships, class_name: "UserRelationship", foreign_key: "follower_id", dependent: :destroy

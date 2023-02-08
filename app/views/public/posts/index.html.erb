@@ -12,7 +12,16 @@
             <% @posts.each do |post_content| %>
             <tr>
                 <td><%= post_content.store_name %></td>
-                <td>❤️</td>
+                <td><% if @post.favorited?(current_user) %>
+                        <%= link_to post_favorite_path(@post.id), method: :delete do %>
+                            <span style="color:red;">❤️</span>
+                        <% end %>
+                    <% else %>
+                        <%= link_to post_favorites_path(@post.id), method: :post do %>
+                            <span>❤️</span>
+                        <% end %>
+                    <% end %>
+                </td>
                 <td><%= post_content.review %></td>
                 <td>コメント表示</td>
             </tr>

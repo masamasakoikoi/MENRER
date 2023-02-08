@@ -34,7 +34,10 @@ Rails.application.routes.draw do
     
     # patch 'users/id' => "users#edit", as: "edit"
     
-    resources :posts ,only:[:index, :show, :new, :edit]
+    resources :posts ,only:[:index, :show, :new, :edit] do
+      resource :favorites, only: [:create, :destroy]
+    end
+    
     post 'posts' => 'posts#create'
     
     get 'relationships/followings'
