@@ -7,15 +7,17 @@ class Public::PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
   end
 
   def edit
   end
   
   def create
-    post = Post.new(post_params)
-    post.save
+    @post = Post.new(post_params)
+    @post.save
+    # binding.pry
     redirect_to '/posts'
   end
   

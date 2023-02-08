@@ -9,11 +9,11 @@
             </tr>
         </thead>
         <tbody>
-            <% @posts.each do |post| %>
+            <% @posts.each do |post_content| %>
             <tr>
-                <td><%= post.store_name %></td>
+                <td><%= post_content.store_name %></td>
                 <td>❤️</td>
-                <td><%= post.review %></td>
+                <td><%= post_content.review %></td>
                 <td>コメント表示</td>
             </tr>
             <% end %>
