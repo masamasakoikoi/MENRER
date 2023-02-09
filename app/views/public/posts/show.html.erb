@@ -43,6 +43,8 @@
 </table>
 
 
-<h3><%= @user.last_name %>
-    <%= @user.first_name %>さんの投稿一覧</h3>
-    作成中
+<h3><%#= @user.last_name %>
+    <%#= @user.first_name %>さんの投稿一覧</h3>
+    
+    
+        <div id="comments-area"><%= render "public/posts/comment",comments: @comments, posts: @post %></div>

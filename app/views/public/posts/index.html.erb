@@ -11,23 +11,25 @@
         <tbody>
             <% @posts.each do |post_content| %>
             <tr>
-                <td><%= post_content.store_name %></td>
-                
-                <!--後で質問-->
-                <!--<td><%# if post_content.favorited?(current_user) %>-->
-                <!--        <%#= link_to post_favorite_path(@post.id), method: :delete do %>-->
-                <!--            <span style="color:red;">❤️</span>-->
-                <!--        <%# end %>-->
-                <!--    <%# else %>-->
-                <!--        <%#= link_to post_favorites_path(@post.id), method: :post do %>-->
-                <td>         <span>❤️</span>
-                <!--        <%# end %>-->
-                <!--    <%# end %>-->
-                
+                <td><%= link_to post_content.store_name, post_path(post_content) %></td>
+                <td><% if post_content.favorited?(current_user) %>
+                        <%= link_to post_favorites_path(post_content.id), method: :delete do %>
+                            <span>❤ <%= post_content.favorites.count %></span>
+                        <% end %>
+                    <% else %>
+                        <%= link_to post_favorites_path(post_content.id), method: :post do %>
+                            <span>♡ <%= post_content.favorites.count %>︎</span>
+                        <% end %>
+                    <% end %>
                 </td>
                 <td><%= post_content.review %></td>
-                <td>コメント表示</td>
+                <td>コメント数:<%= post_content.comments.count %></td>
+                <% if post_content.user == current_user %>
+                <td><%= link_to"編集", edit_post_path(post_content) %></td>
+                <td><%= link_to"削除", post_path(post_content), method: :delete %></td>
+                <% end %>
             </tr>
             <% end %>
         </tbody>
     </table>
+    <div id="comments-area"><%#= render "public/posts/comment",comments: @comments,posts: @posts %></div>

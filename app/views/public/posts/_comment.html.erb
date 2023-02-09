@@ -1,0 +1,28 @@
+
+
+
+    <table><% posts.comments.each do |comment| %>
+    
+        <tr>
+            <td>
+                <%= link_to user_path(posts.user.id) do %>
+                　<%= comment.user.name %>
+                <% end %>
+            </td>
+            
+            <td><%= comment.post_comment %></td>
+        <% if comment.user == current_user %>
+            <td><%= link_to "削除", post_post_comment_path(comment.id), method: :delete,remote: true %></td>
+        <% end %>
+        </tr>
+        <% end %>
+    </table>
+    
+<div class="form-group">
+    <label for="newcomment">Comment</label>
+    
+    <%= form_with(model:[posts, comments], local: true) do |f| %>
+    <%= f.text_area :post_comment, row:'5',placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+    <% end %>
+</div>

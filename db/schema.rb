@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2023_02_09_070302) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "posts", id: false, force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "store_name", null: false
     t.string "post_code", null: false
