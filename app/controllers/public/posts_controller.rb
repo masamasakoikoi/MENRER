@@ -1,7 +1,7 @@
 class Public::PostsController < ApplicationController
   def index
     @posts = Post.all
-    # @post = @post.id
+    #@post = @post.id
   end
 
   def show

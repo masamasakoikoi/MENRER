@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'comments/create'
+    get 'comments/destroy'
+  end
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -36,6 +40,7 @@ Rails.application.routes.draw do
     
     resources :posts ,only:[:index, :show, :new, :edit] do
       resource :favorites, only: [:create, :destroy]
+      resources:comments,only:[:create, :destroy]
     end
     
     post 'posts' => 'posts#create'
