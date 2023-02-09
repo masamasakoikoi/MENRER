@@ -1,2 +1,48 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<h1>投稿詳細</h1>
+<table style="table">
+    <tr>
+        <th>
+            <p>店名</p>
+        </th>
+        <td>
+            <p><%= @post.store_name %></p>
+        </td>
+    </tr>
+    
+    <tr>
+        <th>
+            <p>郵便番号</p>
+        </th>
+        <td>
+            <p><%= @post.post_code %></p>
+        </td>
+    </tr>
+    
+    <tr>
+        <th>
+            <p>住所</p>
+        </th>
+        <td>
+            <p><%= @post.address %></p>
+        </td>
+    </tr>
+    
+    <tr>
+        <th>
+            <p>住所</p>
+        </th>
+        <td>
+            <p><%= @post.address %></p>
+        </td>
+    </tr>
+    
+    
+    
+    
+    
+</table>
+
+
+<h3><%= @user.last_name %>
+    <%= @user.first_name %>さんの投稿一覧</h3>
+    作成中
