@@ -27,15 +27,6 @@
         </td>
     </tr>
     
-    <tr>
-        <th>
-            <p>住所</p>
-        </th>
-        <td>
-            <p><%= @post.address %></p>
-        </td>
-    </tr>
-    
     
     
     
@@ -47,4 +38,4 @@
     <%#= @user.first_name %>さんの投稿一覧</h3>
     
     
-        <div id="comments-area"><%= render "public/posts/comment",comments: @comments, posts: @post %></div>
+        <div id="comments-area"><%= render "public/posts/comment",posts: @post,comments: @comments%></div>

@@ -13,7 +13,7 @@ class User < ApplicationRecord
   
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :post_comments, dependent: :destroy
+  has_many :comments, dependent: :destroy
   
   #フォローした、されたの関係
   has_many :user_relationships, class_name: "UserRelationship", foreign_key: "follower_id", dependent: :destroy
