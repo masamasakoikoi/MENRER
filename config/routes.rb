@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-
-  namespace :public do
-    get 'comments/create'
-    get 'comments/destroy'
-  end
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
@@ -49,7 +44,11 @@ Rails.application.routes.draw do
     get 'relationships/followers'
   
     resources :users ,only:[:index, :show, :edit, :update] do
+      member do
+        get :favorites
+      end
       get 'users/unsubscribe'
+      
       
       
       resource :relationships,only:[:create, :destroy]

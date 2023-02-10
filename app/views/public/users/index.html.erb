@@ -11,7 +11,11 @@
       <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td>氏名：<%= user.last_name %><%= user.first_name %></td>
+            <td>氏名：
+              <%= link_to user_path(user) do %>
+              <%= user.last_name %><%= user.first_name %>
+              <% end %>
+              </td>
             <td><%= user.followings.count %></td>
             <td><%= user.followers.count %></td>
             <td>

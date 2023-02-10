@@ -31,6 +31,14 @@
             <p><%= @user.followers.count %></p>
         </td>
     </tr>
+     <tr>
+        <th>
+            <p>いいね一覧</p>
+        </th>
+        <td>
+            <p><%= link_to "いいね一覧",favorites_user_path(@user) %></p>
+        </td>
+    </tr>
 </table>
 
 
