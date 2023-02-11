@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @genres = Genre.all
+    @posts = params[:genre_name].present? ? Genre.find(params[:genre_name]).posts : Post.all
     @comment = Comment.all
   end
 
@@ -27,6 +28,6 @@ class Public::PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:store_name, :post_code, :address, :regular_holiday, :review)
+    params.require(:post).permit(:store_name, :post_code, :address, :regular_holiday, :review, genre_ids: [])
   end
 end

@@ -27,8 +27,16 @@
         </td>
     </tr>
     
-    
-    
+    <tr>
+        <th>
+            <p>ジャンル</p>
+        </th>
+        <td>
+            <p><% @post.genres.each do |genre| %>
+                <%= genre.genre_name %>
+               <% end %></p>
+        </td>
+    </tr>
     
     
 </table>
