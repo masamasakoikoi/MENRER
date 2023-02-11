@@ -6,13 +6,13 @@
         <tr>
             <td>
                 <%= link_to user_path(posts.user.id) do %>
-                　<%= comment.user.name %>
+                　<%= comment.user.last_name %><%= comment.user.first_name %>
                 <% end %>
             </td>
             
             <td><%= comment.post_comment %></td>
                 <% if comment.user == current_user %>
-                    <td><%= link_to "削除", post_post_comment_path(comment.id), method: :delete,remote: true %></td>
+                    <td><%= link_to "削除", post_comment_path(comment.post,comment), method: :delete,remote: true %></td>
                 <% end %>
         </tr>
         <% end %>
