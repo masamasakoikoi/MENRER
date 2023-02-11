@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
     has_one_attached :image
     has_many :favorites
-    has_many :post_genres
-    has_many :genres, through: :post_genres
+    has_many :post_genres, dependent: :destroy
+    has_many :genres, through: :post_genres, dependent: :destroy
     has_many :favorites, dependent: :destroy
     belongs_to :user
     has_many :comments, dependent: :destroy

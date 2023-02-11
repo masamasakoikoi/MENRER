@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     get 'relationships/followings'
     get 'relationships/followers'
   
-    resources :users ,only:[:index, :show, :edit, :update] do
+    resources :users ,only:[:index, :show, :edit, :update, :destroy] do
       member do
         get :favorites
       end

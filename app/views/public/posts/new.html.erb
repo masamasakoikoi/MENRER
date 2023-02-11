@@ -13,9 +13,19 @@
     <%= f.label :"住所" %><%= f.text_field :address %>
   </div>
   
-  <!--<div class="field">-->
-  <!--  <%#= f.label :"ジャンル" %><%#= f.text_field :genre %>-->
-  <!--</div>-->
+  <div class="field">
+    <%= f.label :"ジャンル" %>
+    <div class="check_box">
+      <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :genre_name) do |genre| %>
+       <div class='form-check'>
+        <%= genre.label do %>
+          <%= genre.check_box %>
+          <%= genre.text %>
+        <% end %>
+       </div>
+      <% end %>
+    </div>
+  </div>
   
   <div class="field">
     <%= f.label :"定休日" %><%= f.text_field :regular_holiday %>
