@@ -1,14 +1,21 @@
 <h1>投稿一覧</h1>
-<%= form_tag posts_path, method: :get, class: 'boards_searchForm' do %>
-    <% @genres.each do |genre| %>
-        <div class="genre-box">
-            <%= link_to genre.genre_name, posts_path(genre_name: genre.id)  %>
-        </div>
-    <% end %>
-        <div class="genre-box">
-            <%= link_to "全てのジャンル", posts_path %>
-        </div>
-
+<%#= form_tag posts_path, method: :get, class: 'boards_searchForm' do %>
+    <%# @genres.each do |genre| %>
+<!--        <div class="genre-box">-->
+            <%#= link_to genre.genre_name, posts_path(genre_name: genre.id)  %>
+<!--        </div>-->
+    <%# end %>
+<!--        <div class="genre-box">-->
+            <%#= link_to "全てのジャンル", posts_path %>
+<!--        </div>-->
+    
+    <!--ransack検索-->
+<%= search_form_for(@q) do |f| %>
+    <%= f.label :store_name_or_genres_name_cont, '店名 or ジャンル'%>
+    <%= f.search_field :store_name_or_genres_name_cont, placeholder: '検索ワード' %>
+    <%= f.submit '検索', class: 'btn btn-primary' %>
+    <%= link_to '一覧を出す', posts_path %>
+<% end %>
 
     <table class='table'>
         <thead>
@@ -41,6 +48,6 @@
                 <% end %>
             </tr>
             <% end %>
-        <% end %>
+    <%# end %>
         </tbody>
     </table>

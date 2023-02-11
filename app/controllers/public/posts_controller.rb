@@ -1,8 +1,19 @@
 class Public::PostsController < ApplicationController
   def index
-    @genres = Genre.all
-    @posts = params[:genre_name].present? ? Genre.find(params[:genre_name]).posts : Post.all
+    # @genres = Genre.all
+    #ジャンル検索
+    # @posts = params[:genre_name].present? ? Genre.find(params[:genre_name]).posts : Post.all
+    
     @comment = Comment.all
+    # @posts = Post.all
+    
+    #ransack検索
+    # @q = Post.ransack(params[:q])
+    # @posts = @q.result
+    
+    @q = params[:q]
+    @posts = Post.ransack(store_name_cont: @q).result
+    @genres = Genre.ransack(genre_name_cont: @q).result
   end
 
   def show
