@@ -10,7 +10,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
+  <header class="shadow-sm" style="background:rgb(255,226,199); position: fixed;width:100%; z-index:10;">
+    <nav class="navbar navvar-expand-lg navbar-dark py-3">
     <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
     <p class="notice"><%= notice %></p> 
     <p class="alert"><%= alert %></p>
@@ -71,6 +72,7 @@
       <%= link_to 'ログイン', new_user_session_path  %>
     </li>
   <% end %>
+  </nav>
  </header>
 
 
