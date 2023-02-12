@@ -10,9 +10,9 @@
 <!--        </div>-->
     
     <!--ransack検索-->
-<%= search_form_for(@q) do |f| %>
-    <%= f.label :store_name_or_genres_name_cont, '店名 or ジャンル'%>
-    <%= f.search_field :store_name_or_genres_name_cont, placeholder: '検索ワード' %>
+<%= search_form_for(@q, url:posts_path) do |f| %>
+    <%= f.label :store_name_or_genres_genre_name_cont, '店名 or ジャンル'%>
+    <%= f.text_field :store_name_or_genres_genre_name_cont, placeholder: '検索ワード' %>
     <%= f.submit '検索', class: 'btn btn-primary' %>
     <%= link_to '一覧を出す', posts_path %>
 <% end %>

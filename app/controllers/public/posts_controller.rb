@@ -11,9 +11,8 @@ class Public::PostsController < ApplicationController
     # @q = Post.ransack(params[:q])
     # @posts = @q.result
     
-    @q = params[:q]
-    @posts = Post.ransack(store_name_cont: @q).result
-    @genres = Genre.ransack(genre_name_cont: @q).result
+    @q = Post.ransack(params[:q])
+    @posts =  @q.result
   end
 
   def show
