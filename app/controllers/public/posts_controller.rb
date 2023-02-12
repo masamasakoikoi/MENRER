@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  # before_action :set_post
   def index
     # @genres = Genre.all
     #ジャンル検索
@@ -6,7 +7,6 @@ class Public::PostsController < ApplicationController
     
     @comment = Comment.all
     # @posts = Post.all
-    
     #ransack検索
     # @q = Post.ransack(params[:q])
     # @posts = @q.result
@@ -40,4 +40,8 @@ class Public::PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:store_name, :post_code, :address, :regular_holiday, :review, genre_ids: [])
   end
+  
+  # def set_post
+  #   @post = Post.find(params[:post_id])
+  # end
 end

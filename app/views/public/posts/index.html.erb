@@ -30,16 +30,19 @@
             <% @posts.each do |post_content| %>
             <tr>
                 <td><%= link_to post_content.store_name, post_path(post_content) %></td>
-                <td><% if post_content.favorited?(current_user) %>
-                        <%= link_to post_favorites_path(post_content.id), method: :delete do %>
-                            <span>❤ <%= post_content.favorites.count %></span>
-                        <% end %>
-                    <% else %>
-                        <%= link_to post_favorites_path(post_content.id), method: :post do %>
-                            <span>♡ <%= post_content.favorites.count %>︎</span>
-                        <% end %>
-                    <% end %>
-                </td>
+                <%# if post_content.favorited?(current_user) %>
+                        <%#= link_to post_favorites_path(post_content.id), method: :delete,remote: true do %>
+                            <!--<span>❤ <%#= post_content.favorites.count %></span>-->
+                        <%# end %>
+                    <%# else %>
+                        <%#= link_to post_favorites_path(post_content.id), method: :post,remote: true do %>
+                            <!--<span>♡ <%#= post_content.favorites.count %>︎</span>-->
+                        <%# end %>
+                    <%# end %>
+                    <td id="favorite_buttons_<%= post_content.id %>">
+                    <%= render "public/favorites/favorite", post_content: post_content %>
+                    </td>
+                
                 <td><%= post_content.review %></td>
                 <td>コメント数:<%= post_content.comments.count %></td>
                 <% if post_content.user == current_user %>
