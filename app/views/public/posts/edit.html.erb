@@ -1,2 +1,84 @@
-<h1>Public::Posts#edit</h1>
-<p>Find me in app/views/public/posts/edit.html.erb</p>
+<div class="container p-3">
+  <h4><span style = "background-color: #EEE; padding: 0 20px;">投稿内容編集</span></h4>
+  <%= form_with model:@post, url: post_path,method: :patch do |f| %>
+    <table style="margin-left: 30px;">
+      <tr>
+        <th>
+          <p>店名</p>
+        </th>
+        <td valign = "top">
+          <p style="padding-left: 30px;"><%= f.text_field :store_name, autofocus: true, autocomplete: "store_name" %></p>
+        </td>
+      </tr>
+      
+      <tr>
+        <th>
+          <p>郵便番号</p>
+        </th>
+        <td valign = "top">
+          <p style="padding-left: 30px;"><%= f.text_field :post_code,autocomplete: "post_code" %></p>
+        </td>
+      </tr>
+      
+      <tr>
+        <th>
+          <p>住所</p>
+        </th>
+        <td valign = "top">
+          <p style="padding-left: 30px;"><%= f.text_field :address,autocomplete: "address" %></p>
+        </td>
+      </tr>
+      
+      <tr>
+        <th>
+          <p>ジャンル</p>
+        </th>
+        <td valign = "top">
+          <p style="padding-left: 30px;"><div class="check_box">
+                    <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :genre_name) do |genre| %>
+                     <div class='form-check'>
+                      <%= genre.label do %>
+                        <%= genre.check_box %>
+                        <%= genre.text %>
+                      <% end %>
+                     </div>
+                    <% end %>
+                  </div>
+            </p>
+        </td>
+      </tr>
+      
+      <tr>
+        <th>
+          <p>定休日</p>
+        </th>
+        <td valign = "top">
+          <p style="padding-left: 30px;"><%= f.text_field :regular_holiday,autocomplete: "regular_holiday" %></p>
+        </td>
+      </tr>
+      
+      <tr>
+        <th>
+          <p>口コミ</p>
+        </th>
+        <td valign = "top">
+          <p style="padding-left: 30px;"><%= f.text_field :review,autocomplete: "review" %></p>
+        </td>
+      </tr>
+      
+      <tr>
+        <th>
+          <p>店舗画像</p>
+        </th>
+        <td valign = "top">
+          <p style="padding-left: 30px;"><%= f.file_field :image, accept: "image/*" %></p>
+        </td>
+      </tr>
+          
+      <tr>
+        <th></th>
+        <td><p style="padding-left: 30px;"><%= f.submit "投稿する" %></p></td>
+      </tr>
+    </table>
+  <% end %>
+</div>

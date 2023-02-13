@@ -7,6 +7,11 @@
         <td>
             <p><%= @post.store_name %></p>
         </td>
+        <td>
+        <%if @post.user == current_user %>
+            <%= link_to"編集する", edit_post_path(@post),class:"btn btn-sm btn-success" %>
+        <% end %>
+        </td>
     </tr>
     
     <tr>
@@ -38,12 +43,43 @@
         </td>
     </tr>
     
+    <tr>
+        <th>
+            <p>定休日</p>
+        </th>
+        <td>
+            <p><%= @post.regular_holiday %></p>
+        </td>
+    </tr>
     
+    <tr>
+        <th>
+            <p>いいね：</p>
+        </th>
+        <td>
+            <p>
+            ❤︎<%= @post.favorites.count %>
+            </p>
+        </td>
+    </tr>
+    
+    <tr>
+        <th>
+            <p>口コミ：</p>
+        </th>
+        <td>
+            <p>
+            <%= @post.review %>
+            </p>
+        </td>
+    </tr>
 </table>
 
+<div id="comments-area"><%= render "public/posts/comment",posts: @post,comments: @comments%></div>
 
-<h3><%#= @user.last_name %>
-    <%#= @user.first_name %>さんの投稿一覧</h3>
+
+
+
+
     
     
-        <div id="comments-area"><%= render "public/posts/comment",posts: @post,comments: @comments%></div>

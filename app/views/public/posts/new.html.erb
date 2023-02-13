@@ -1,45 +1,84 @@
-<h1>新規投稿</h1>
-<%= form_with model: @post, url: posts_path do |f| %>
-
-  <div class="field">
-    <%= f.label :"店名" %><%= f.text_field :store_name, autofocus: true %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :"郵便番号" %><%= f.text_field :post_code %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :"住所" %><%= f.text_field :address %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :"ジャンル" %>
-    <div class="check_box">
-      <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :genre_name) do |genre| %>
-       <div class='form-check'>
-        <%= genre.label do %>
-          <%= genre.check_box %>
-          <%= genre.text %>
-        <% end %>
-       </div>
-      <% end %>
-    </div>
-  </div>
-  
-  <div class="field">
-    <%= f.label :"定休日" %><%= f.text_field :regular_holiday %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :"口コミ" %><%= f.text_field :review %>
-  </div>
-  
-  <div class="field">
-     <%= f.label :"店舗画像" %><%= f.file_field :image, accept: "image/*" %>
-  </div>
-  
-  <div class="form-group">
-    <%= f.submit "投稿する" %>
-  </div>
-<% end %>
+<div class="container p-3">
+  <h4><span style = "background-color: #EEE; padding: 0 20px;">新規投稿</span></h4>
+  <%= form_with model: @post, url: posts_path do |f| %>
+    <table style="margin-left: 30px;">
+      <tr>
+        <th>
+          <p>店名</p>
+        </th>
+        <td valign = "top">
+          <p style="padding-left: 30px;"><%= f.text_field :store_name, autofocus: true %></p>
+        </td>
+      </tr>
+      
+      <tr>
+        <th>
+          <p>郵便番号</p>
+        </th>
+        <td valign = "top">
+          <p style="padding-left: 30px;"><%= f.text_field :post_code %></p>
+        </td>
+      </tr>
+      
+      <tr>
+        <th>
+          <p>住所</p>
+        </th>
+        <td valign = "top">
+          <p style="padding-left: 30px;"><%= f.text_field :address %></p>
+        </td>
+      </tr>
+      
+      <tr>
+        <th>
+          <p>ジャンル</p>
+        </th>
+        <td valign = "top">
+          <p style="padding-left: 30px;"><div class="check_box">
+                    <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :genre_name) do |genre| %>
+                     <div class='form-check'>
+                      <%= genre.label do %>
+                        <%= genre.check_box %>
+                        <%= genre.text %>
+                      <% end %>
+                     </div>
+                    <% end %>
+                  </div>
+            </p>
+        </td>
+      </tr>
+      
+      <tr>
+        <th>
+          <p>定休日</p>
+        </th>
+        <td valign = "top">
+          <p style="padding-left: 30px;"><%= f.text_field :regular_holiday %></p>
+        </td>
+      </tr>
+      
+      <tr>
+        <th>
+          <p>口コミ</p>
+        </th>
+        <td valign = "top">
+          <p style="padding-left: 30px;"><%= f.text_field :review %></p>
+        </td>
+      </tr>
+      
+      <tr>
+        <th>
+          <p>店舗画像</p>
+        </th>
+        <td valign = "top">
+          <p style="padding-left: 30px;"><%= f.file_field :image, accept: "image/*" %></p>
+        </td>
+      </tr>
+          
+      <tr>
+        <th></th>
+        <td><p style="padding-left: 30px;"><%= f.submit "投稿する" %></p></td>
+      </tr>
+    </table>
+  <% end %>
+</div>

@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     
+    patch 'posts/:id' => 'posts#update'
     # patch 'users/id' => "users#edit", as: "edit"
     
     resources :posts ,only:[:index, :show, :new, :edit] do

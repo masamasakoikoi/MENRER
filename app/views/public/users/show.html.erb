@@ -9,8 +9,9 @@
             <p><%= @user.last_name %>
                <%= @user.first_name %></p>
         </td>
-        <td>
-            <%= link_to "編集する", edit_user_path, class:"btn btn-sm btn-success" %>
+        <td><%if @user == current_user %>
+                <%= link_to "編集する", edit_user_path, class:"btn btn-sm btn-success" %>
+            <% end %>
         </td>
     </tr>
     

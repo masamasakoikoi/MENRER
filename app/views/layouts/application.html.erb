@@ -10,29 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 <body>
-  <style>
-      body{font-family: 'Kosugi Maru', sans-serif;}
-      .navbar-toggler .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(181,23,0,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-        border-color: brown;
-      }
-      .logo{
-        transform: scale(1.8,1.8);
-        transition: .5s;
-      }
-      .logo:hover{
-        transform: scale(2.4,2.4);
-        transition: .5s;
-      }
-      .scale{
-        transition: .5s;
-      }
-      .scale:hover{
-        transform: scale(1.15,1.15);
-        transition: .5s;
-      }
-    </style>
-  <header class="shadow-sm" style="background:rgb(255,226,199); position: fixed;width:100%; z-index:10;">
+  <header class="shadow-sm" style="background:rgb(255,226,199); position: fixed; width:100%; z-index:10;">
     <nav class="navbar navvar-expand-lg navbar-dark py-3">
       <div class="container-fluid">
       <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
@@ -46,51 +24,43 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <li class="mr-1"><%= link_to 'トップ', root_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
-            <li class="mr-1"><%= link_to '新規投稿', new_post_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
-            <li class="mr-1"><%= link_to 'マイページ', user_path(current_user),class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
-            <li class="mr-1"><%= link_to '会員一覧', users_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
-            <li class="mr-1"><%= link_to '投稿一覧', posts_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
-            <li class="mr-1"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;" %></li>
+            <ul class="navbar-nav ml-auto">
+              <li class="mr-1"><%= link_to 'トップ', root_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
+              <li class="mr-1"><%= link_to '新規投稿', new_post_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
+              <li class="mr-1"><%= link_to 'マイページ', user_path(current_user),class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
+              <li class="mr-1"><%= link_to '会員一覧', users_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
+              <li class="mr-1"><%= link_to '投稿一覧', posts_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
+              <li class="mr-1"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;" %></li>
+           </ul>
           </div>
             
-            <% elsif admin_signed_in? %>
-            
-            <li>
-              <%= link_to '会員一覧', admin_users_path  %>
-            </li>
-            
-            <li>
-              <%= link_to '投稿一覧', admin_posts_path  %>
-            </li>
-            
-             <li>
-              <%= link_to 'ジャンル一覧', admin_genres_path %>
-            </li>
-           
-            
-            <li>
-              <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %>
-            </li>
-            
-            
-            
-            <% else %>
-            
-            <li>
-              <%= link_to '新規登録', new_user_registration_path  %>
-            </li>
-            
-            <li>
-              <%= link_to 'ログイン', new_user_session_path  %>
-            </li>
+          <% elsif admin_signed_in? %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <li class="mr-1"><%= link_to '会員一覧', admin_users_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
+              <li class="mr-1"><%= link_to '投稿一覧', admin_posts_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
+              <li class="mr-1"><%= link_to 'ジャンル一覧', admin_genres_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
+              <li class="mr-1"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
+            </ul>
+          </div>
+          <% else %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <li class="mr-1"><%= link_to '新規登録', new_user_registration_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
+              <li class="mr-1"><%= link_to 'ログイン', new_user_session_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
+            </ul>
+          </div>
           <% end %>
         </div>
       </nav>
    </header>
-
-
-  
+   <div class="pb-5" style="background: rgba(255,240,86,.2); padding-top:120px; min-height:100vh;">
     <%= yield %>
   </body>
 </html>
