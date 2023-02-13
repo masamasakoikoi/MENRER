@@ -6,6 +6,11 @@ class User < ApplicationRecord
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
+      user.last_name = "ゲスト"
+      user.first_name = "太郎"
+      user.last_name_kana = "ゲスト"
+      user.first_name_kana = "タロウ"
+      
       # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
       # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
     end
