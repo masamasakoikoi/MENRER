@@ -1,25 +1,45 @@
-<h2>会員情報編集</h2>
-
-<%= form_with model:@user,url: user_path, method: :patch do |f| %>
-
-  <div class="field">
-    <%= f.label :"名前" %><br />
-    （姓）<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-    （名）<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"フリガナ" %><br />
-    （セイ）<%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
-    （メイ）<%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "編集内容を保存" %>
-  </div>
-<% end %>
+ <div class="container p-3">
+    <h4><span style = "background-color: #EEE; padding: 0 20px;">会員情報編集</span></h4>
+      <%= form_with model:@user,url: user_path, method: :patch do |f| %>
+       <table style="margin-left: 30px;">
+        <tr>
+          <th>
+            <p>名前</p>
+          </th>
+          <td valign = "top">
+            <p>（姓）<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %></p>
+          </td>
+          <td valign = "top">
+            <p>（名）<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></p>
+          </td>
+        </tr>
+        
+         <tr>
+          <th>
+            <p><%= f.label :"フリガナ" %></p>
+          </th>
+          <td valign = "top">
+            <p style="padding-left: 10px;">（セイ）<%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %></p>
+          </td>
+          <td valign = "top">
+            <p style="padding-left: 10px;">（メイ）<%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %></p>
+          </td>
+        </tr>
+        
+        <tr>
+          <th>
+            <p><%= f.label :"メールアドレス" %></p>
+          </th>
+          <td valign = "top">
+            <p style="padding-left: 30px;"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
+          </td>
+        </tr>
+        
+        <tr>
+          <th></th>
+          <td>
+            <%= f.submit "編集内容を保存" %>
+          </td>
+        </tr>
+      <% end %>
+</div>

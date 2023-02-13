@@ -13,6 +13,9 @@
                 <%= link_to "編集する", edit_user_path, class:"btn btn-sm btn-success" %>
             <% end %>
         </td>
+        <td>
+            <%= link_to "いいね一覧",favorites_user_path(@user), class:"btn btn-sm btn-primary" %>
+        </td>
     </tr>
     
     <tr>
@@ -32,17 +35,31 @@
             <p><%= @user.followers.count %></p>
         </td>
     </tr>
-     <tr>
-        <th>
-            <p>いいね一覧</p>
-        </th>
-        <td>
-            <p><%= link_to "いいね一覧",favorites_user_path(@user) %></p>
-        </td>
-    </tr>
 </table>
 
 
 <h3><%= @user.last_name %>
     <%= @user.first_name %>さんの投稿一覧</h3>
-    作成中
+<table class='table'>
+        <thead>
+            <tr>
+                <th>店名</th>
+                <th>いいね</th>
+                <th>口コミ</th>
+                <th>コメント</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @user.posts.each do |post_content| %>
+            <tr>
+                <td><%= link_to post_content.store_name, post_path(post_content) %></td>
+                    <td id="favorite_buttons_<%= post_content.id %>">
+                    <%= render "public/favorites/favorite", post_content: post_content %>
+                    </td>
+                
+                <td><%= post_content.review %></td>
+                <td>コメント数:<%= post_content.comments.count %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>

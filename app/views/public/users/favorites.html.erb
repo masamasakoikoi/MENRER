@@ -1,5 +1,5 @@
-<h2><%= current_user.last_name %>
-    <%= current_user.first_name %>さんのいいね！した投稿一覧</h2>
+<h2><%= @user.last_name %>
+    <%= @user.first_name %>さんのいいね！した投稿一覧</h2>
     <table class='table'>
         <thead>
             <tr>
@@ -12,8 +12,9 @@
         <tbody>
             <% @favorite_posts.each do |post_content| %>
             <tr>
-                <td><%= post_content.store_name %></td>
-                <td><%= post_content.favorites.count %></td>
+                <td><%= link_to post_content.store_name, post_path(post_content) %>
+                    </td>
+                <td>❤︎ <%= post_content.favorites.count %></td>
                 <td><%= post_content.review%></td>
                 <td><%= post_content.comments.count %></td>
             </tr>
