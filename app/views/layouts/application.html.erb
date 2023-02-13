@@ -11,15 +11,16 @@
   </head>
 <body>
   <header class="shadow-sm" style="background:rgb(255,226,199); position: fixed; width:100%; z-index:10;">
-    <nav class="navbar navvar-expand-lg navbar-dark py-3">
-      <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-dark py-3">
+        <div class="container-fluid">
+          <a class="navbar" href="/">
+              <%= image_tag ('pinterest_profile_image.png'), size:"100x60",class:"rounded-circle logo" %>
+          </a>
       <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
       <p class="notice"><%= notice %></p> 
       <p class="alert"><%= alert %></p>
+      <!--会員用のヘッダー-->
           <% if user_signed_in? %>
-          <a class="navbar" href="/">
-          </a>
-          <h5 class="m-0 pl-5" style="color:brown;">ようこそ、<%= current_user.last_name %>さん！</h5>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -33,7 +34,7 @@
               <li class="mr-1"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;" %></li>
            </ul>
           </div>
-            
+        <!--管理人用のヘッダー　-->
           <% elsif admin_signed_in? %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
