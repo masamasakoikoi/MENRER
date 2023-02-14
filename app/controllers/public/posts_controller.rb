@@ -25,11 +25,15 @@ class Public::PostsController < ApplicationController
   end
   
   def create
+    @q = Post.ransack(params[:q])
+    @posts =  @q.result
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    # binding.pry
-    @post.save
-    redirect_to posts_path
+     if @post.save
+        redirect_to posts_path
+     else
+       render :index
+     end
   end
   
   def destroy

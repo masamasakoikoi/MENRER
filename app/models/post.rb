@@ -7,6 +7,12 @@ class Post < ApplicationRecord
     belongs_to :user
     has_many :comments, dependent: :destroy
     
+    validates :store_name,presence: true
+    validates :post_code,presence: true
+    validates :address,presence: true
+    validates :regular_holiday,presence: true
+    validates :review,presence: true
+    
     def favorited?(user)
         favorites.where(user_id: user.id).exists?
     end
