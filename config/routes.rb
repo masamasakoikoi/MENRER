@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   end
   
   namespace :admin do
+    delete 'genres/:id' => 'genres#destroy'
+    patch 'genres/:id' => 'genres#update'
     
     resources :genres ,only:[:index, :create ,:edit, :update]
   
@@ -32,7 +34,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     
     patch 'posts/:id' => 'posts#update'
-    # patch 'users/id' => "users#edit", as: "edit"
+    delete 'posts/:id' => 'posts#destroy'
     
     resources :posts ,only:[:index, :show, :new, :edit] do
       resource :favorites, only: [:create, :destroy]

@@ -1,82 +1,91 @@
-<h1>投稿詳細</h1>
-<table style="table">
-    <tr>
-        <th>
-            <p>店名</p>
-        </th>
-        <td>
-            <p><%= @post.store_name %></p>
-        </td>
-        <td>
-        <%if @post.user == current_user %>
-            <%= link_to"編集する", edit_post_path(@post),class:"btn btn-sm btn-success" %>
-        <% end %>
-        </td>
-    </tr>
-    
-    <tr>
-        <th>
-            <p>郵便番号</p>
-        </th>
-        <td>
-            <p><%= @post.post_code %></p>
-        </td>
-    </tr>
-    
-    <tr>
-        <th>
-            <p>住所</p>
-        </th>
-        <td>
-            <p><%= @post.address %></p>
-        </td>
-    </tr>
-    
-    <tr>
-        <th>
-            <p>ジャンル</p>
-        </th>
-        <td>
-            <p><% @post.genres.each do |genre| %>
-                <%= genre.genre_name %>
-               <% end %></p>
-        </td>
-    </tr>
-    
-    <tr>
-        <th>
-            <p>定休日</p>
-        </th>
-        <td>
-            <p><%= @post.regular_holiday %></p>
-        </td>
-    </tr>
-    
-    <tr>
-        <th>
-            <p>いいね：</p>
-        </th>
-        <td>
-            <p>
-            ❤︎<%= @post.favorites.count %>
-            </p>
-        </td>
-    </tr>
-    
-    <tr>
-        <th>
-            <p>口コミ：</p>
-        </th>
-        <td>
-            <p>
-            <%= @post.review %>
-            </p>
-        </td>
-    </tr>
-</table>
-
-<div id="comments-area"><%= render "public/posts/comment",posts: @post,comments: @comments%></div>
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>投稿詳細</h1>
+            <table style="table">
+                <tr>
+                    <th>
+                        <p>店名</p>
+                    </th>
+                    <td>
+                        <p><%= @post.store_name %></p>
+                    </td>
+                    <td>
+                    <%if @post.user == current_user %>
+                        <%= link_to"編集する", edit_post_path(@post),class:"btn btn-sm btn-success" %>
+                        <%= link_to"投稿を削除", post_path(@post),class:"btn btn-sm btn-danger",method: :delete,data: {confirm: "本当に削除しますか?"} %>
+                    <% end %>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <th>
+                        <p>郵便番号</p>
+                    </th>
+                    <td>
+                        <p><%= @post.post_code %></p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <th>
+                        <p>住所</p>
+                    </th>
+                    <td>
+                        <p><%= @post.address %></p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <th>
+                        <p>ジャンル</p>
+                    </th>
+                    <td>
+                        <p><% @post.genres.each do |genre| %>
+                            <%= genre.genre_name %>
+                           <% end %></p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <th>
+                        <p>定休日</p>
+                    </th>
+                    <td>
+                        <p><%= @post.regular_holiday %></p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <th>
+                        <p>いいね：</p>
+                    </th>
+                    <td>
+                        <p>
+                        ❤︎<%= @post.favorites.count %>
+                        </p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <th>
+                        <p>口コミ：</p>
+                    </th>
+                    <td>
+                        <p>
+                        <%= @post.review %>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            
+            <div id="comments-area"><%= render "public/posts/comment",posts: @post,comments: @comments%></div>
+        </div>
+        <div class="col-md-4">
+            <%= image_tag @post.image, size: "200x160" %>
+        </div>
+    </div>
+</div>
 
 
 

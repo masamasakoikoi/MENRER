@@ -1,16 +1,6 @@
 class Public::PostsController < ApplicationController
-  # before_action :set_post
   def index
-    # @genres = Genre.all
-    #ジャンル検索
-    # @posts = params[:genre_name].present? ? Genre.find(params[:genre_name]).posts : Post.all
-    
     @comment = Comment.all
-    # @posts = Post.all
-    #ransack検索
-    # @q = Post.ransack(params[:q])
-    # @posts = @q.result
-    
     @q = Post.ransack(params[:q])
     @posts =  @q.result
   end
@@ -39,6 +29,12 @@ class Public::PostsController < ApplicationController
     @post.user_id = current_user.id
     # binding.pry
     @post.save
+    redirect_to posts_path
+  end
+  
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
     redirect_to posts_path
   end
   
