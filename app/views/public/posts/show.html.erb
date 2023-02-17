@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <h1>投稿詳細</h1>
             <table style="table">
                 <tr>
@@ -81,8 +81,12 @@
             
             <div id="comments-area"><%= render "public/posts/comment",posts: @post,comments: @comments%></div>
         </div>
-        <div class="col-md-4">
-            <!--<%#= image_tag @post.image, size: "200x160" %>-->
+        <div class="col-md-5">
+            <% if @post.image.attached? %>
+                <%= image_tag @post.image, size: "400x400" %>
+            <% else %>
+                <%= image_tag 'no_image',size:"400x400" %>
+            <% end %>
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@
 <%= search_form_for @q do |f| %>
   <%= f.search_field :last_name_or_first_name_cont,placeholder: "会員検索" %>
 <%= f.submit %>
+<%= link_to '一覧を出す', users_path %>
 <% end %>
 
     <table class='table'>

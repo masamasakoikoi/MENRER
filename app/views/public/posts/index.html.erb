@@ -1,45 +1,42 @@
-<h1>投稿一覧</h1>
-
-<!--ジャンル検索-->
-<%#= form_tag posts_path, method: :get, class: 'boards_searchForm' do %>
-    <%# @genres.each do |genre| %>
-<!--        <div class="genre-box">-->
-            <%#= link_to genre.genre_name, posts_path(genre_name: genre.id)  %>
-<!--        </div>-->
-    <%# end %>
-<!--        <div class="genre-box">-->
-            <%#= link_to "全てのジャンル", posts_path %>
-<!--        </div>-->
-    
-    <!--ransack検索-->
-<%= search_form_for(@q, url:posts_path) do |f| %>
-    <%= f.label :store_name_or_genres_genre_name_cont, '店名 or ジャンル'%>
-    <%= f.text_field :store_name_or_genres_genre_name_cont, placeholder: '検索ワード' %>
-    <%= f.submit '検索', class: 'btn btn-primary' %>
-    <%= link_to '一覧を出す', posts_path %>
-<% end %>
-
-    <table class='table'>
-        <thead>
-            <tr>
-                <th>店名</th>
-                <th>いいね</th>
-                <th>口コミ</th>
-                <th>コメント</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @posts.each do |post_content| %>
-            <tr>
-                <td><%= link_to post_content.store_name, post_path(post_content) %></td>
-                    <td id="favorite_buttons_<%= post_content.id %>">
-                    <%= render "public/favorites/favorite", post_content: post_content %>
-                    </td>
-                
-                <td><%= post_content.review %></td>
-                <td>コメント数:<%= post_content.comments.count %></td>
-            </tr>
-            <% end %>
-    <%# end %>
-        </tbody>
-    </table>
+ <div class="container">
+     <h1>投稿一覧</h1>
+     <div class="row">
+            <!--ransack店名検索-->
+        <%= search_form_for(@q, url:posts_path) do |f| %>
+            <%= f.text_field :store_name_or_genres_genre_name_cont, placeholder: '店名検索' %>
+            <%= f.submit '検索', class: 'btn btn-success btn-sm' %>
+        <% end %>
+        
+        <%= search_form_for(@q, url:posts_path, local: true) do |f| %>
+            <%= f.label :genres_genre_name, 'ジャンル検索'%>
+            <%= f.select :genres_genre_name_cont, options_from_collection_for_select(Genre.all, :id, :genre_name,1) %>
+            <%= f.button '検索', class: 'btn btn-success btn-sm' %>
+        <% end %>
+        <%= link_to '一覧を出す', posts_path, class: 'btn btn-secondary btn-sm' %>
+    </div>
+    <div class="row">
+            <table class='table'>
+                <thead>
+                    <tr>
+                        <th>店名</th>
+                        <th>いいね</th>
+                        <th>口コミ</th>
+                        <th>コメント</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @posts.each do |post_content| %>
+                    <tr>
+                        <td><%= link_to post_content.store_name, post_path(post_content) %></td>
+                            <td id="favorite_buttons_<%= post_content.id %>">
+                            <%= render "public/favorites/favorite", post_content: post_content %>
+                            </td>
+                        <td><%= post_content.review %></td>
+                        <td>コメント数:<%= post_content.comments.count %></td>
+                        <% end %>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+    <div style="text-align:center;"><p><%= paginate @posts %></p></div>
+</div>    
