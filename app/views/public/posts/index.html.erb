@@ -1,16 +1,4 @@
 <h1>投稿一覧</h1>
-
-<!--ジャンル検索-->
-<%#= form_tag posts_path, method: :get, class: 'boards_searchForm' do %>
-    <%# @genres.each do |genre| %>
-<!--        <div class="genre-box">-->
-            <%#= link_to genre.genre_name, posts_path(genre_name: genre.id)  %>
-<!--        </div>-->
-    <%# end %>
-<!--        <div class="genre-box">-->
-            <%#= link_to "全てのジャンル", posts_path %>
-<!--        </div>-->
-    
     <!--ransack検索-->
 <%= search_form_for(@q, url:posts_path) do |f| %>
     <%= f.label :store_name_or_genres_genre_name_cont, '店名 or ジャンル'%>
@@ -35,11 +23,12 @@
                     <td id="favorite_buttons_<%= post_content.id %>">
                     <%= render "public/favorites/favorite", post_content: post_content %>
                     </td>
-                
                 <td><%= post_content.review %></td>
                 <td>コメント数:<%= post_content.comments.count %></td>
+                <% end %>
             </tr>
-            <% end %>
-    <%# end %>
         </tbody>
     </table>
+    
+    <div style="text-align:center;"><p><%= paginate @posts %></p></div>
+    

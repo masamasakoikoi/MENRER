@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  */
- サイト全体のフォント指定 
-.body {
-font-family:  serif;
+.pagination {
+  justify-content: center;
 }
