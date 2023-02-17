@@ -1,3 +1,8 @@
+Admin.create!(
+   email: 'admin@gmail.com',
+   password: 'admin_test'
+)
+
 Genre.create([
   { genre_name: '醤油'},
   { genre_name: '塩'},
