@@ -1,39 +1,45 @@
-<h1>会員一覧</h1>
-<%= search_form_for @q do |f| %>
-  <%= f.search_field :last_name_or_first_name_cont,placeholder: "会員検索" %>
-<%= f.submit %>
-<%= link_to '一覧を出す', users_path %>
-<% end %>
-
-    <table class='table'>
-      <thead>
-        <tr>
-          <th>氏名</th>
-          <th>フォロー数</th>
-          <th>フォロワー数</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td>氏名：
-              <%= link_to user_path(user) do %>
-              <%= user.last_name %><%= user.first_name %>
-              <% end %>
-              </td>
-            <td><%= link_to user.followings.count,user_followings_path(user) %></td>
-            <td><%= link_to user.followers.count,user_followers_path(user) %></td>
-            <td>
-              <% unless user == current_user %>
-              <% if current_user.following?(user) %>
-                <%= link_to "フォロー済み", user_relationships_path(user.id), method: :delete %>
-              <% else %>
-                <%= link_to "フォローする", user_relationships_path(user.id), method: :post %>
-              <% end %>
-              <% end %>
-            </td>
-        <% end %>
-          </tr>
-      </tbody>
-    </table>
+<div class="container">
+  <h1>会員一覧</h1>
+  <div class="row">
+    <%= search_form_for @q do |f| %>
+      <%= f.search_field :last_name_or_first_name_cont,placeholder: "会員検索" %>
+    <%= f.submit %>
+    <%= link_to '一覧を出す', users_path %>
+    <% end %>
+  </div>
+  <div class="row">
+        <table class='table'>
+          <thead>
+            <tr>
+              <th>氏名</th>
+              <th>フォロー数</th>
+              <th>フォロワー数</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td>氏名：
+                  <%= link_to user_path(user) do %>
+                  <%= user.last_name %><%= user.first_name %>
+                  <% end %>
+                  </td>
+                <td><%= link_to user.followings.count,user_followings_path(user) %></td>
+                <td><%= link_to user.followers.count,user_followers_path(user) %></td>
+                <td>
+                  <% unless user == current_user %>
+                  <% if current_user.following?(user) %>
+                    <%= link_to "フォロー済み", user_relationships_path(user.id), method: :delete %>
+                  <% else %>
+                    <%= link_to "フォローする", user_relationships_path(user.id), method: :post %>
+                  <% end %>
+                  <% end %>
+                </td>
+            <% end %>
+              </tr>
+          </tbody>
+        </table>
+  </div>
+  <div style="text-align:center;"><p><%= paginate @users %></p></div>
+</div>
