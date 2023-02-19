@@ -1,0 +1,12 @@
+<script>
+    var elem = document.getElementById('star');
+    console.log(elem)
+    var opt = {  
+        size     : 36,
+        starOn: "<%= asset_path('star-on.png') %>",
+        starOff: "<%= asset_path('star-off.png') %>",
+        scoreName: 'comment[rate]'
+        // half: true
+      };
+      raty(elem,opt);
+</script>

@@ -7,19 +7,51 @@
                 <% end %>：
             </td>
             
-            <td><%= comment.post_comment %></td>
+            <td>
+                <%= comment.post_comment %>
+            </td>
+            
+            <td>
+                <div id="star-rate<%= comment.id%>"></div>    
+                <script>
+                    var elem = document.getElementById('star-rate<%= comment.id%>');
+                    console.log(elem)
+                    var opt = {  
+                        size     : 36,
+                        starOn: "<%= asset_path('star-on.png') %>",
+                        starOff: "<%= asset_path('star-off.png') %>",
+                        scoreName: 'comment[rate]',
+                        readOnly: true,
+                        score: <%= comment.rate %>
+                      };
+                      raty(elem,opt);
+                </script>
+            </td>
+            
+            <td>
                 <% if comment.user == current_user %>
-                    <td><%= link_to "削除", post_comment_path(comment.post,comment), method: :delete, class:"btn btn-sm btn-danger" ,remote: true %></td>
+                    <%= link_to "削除", post_comment_path(comment.post,comment), method: :delete, class:"btn btn-sm btn-danger" ,remote: true %>
                 <% end %>
+            </td>
         </tr>
         <% end %>
     </table>
     
+<!--コメントフォーム-->
 <div class="form-group">
     <label for="newcomment">コメント</label>
     
     <%= form_with(model:[posts, comments], local: true) do |f| %>
         <%= f.text_area :post_comment, row:'5',placeholder: "コメントをここに" %>
         <%= f.submit "送信" %>
+        
+<!--評価フォーム-->
+            <div id="star">
+                <%= f.label :rate,'評価' %>
+                <%= f.hidden_field :rate, id: :review_star %>
+            </div>
+            
+        <%= render "public/posts/rate",posts: @post,comments: @comments%>
+        
     <% end %>
 </div>
