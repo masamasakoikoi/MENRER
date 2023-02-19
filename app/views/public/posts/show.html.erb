@@ -80,6 +80,17 @@
             </table>
             
             <div id="comments-area"><%= render "public/posts/comment",posts: @post,comments: @comments%></div>
+            <!--jquery発火イベントを記載-->
+            <script>
+            $('#star').raty({
+                size :36
+                starOff: '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>'
+                scoreName: 'comment[rate]',
+                half: true,
+            });
+            </script>
         </div>
         <div class="col-md-5">
             <% if @post.image.attached? %>
