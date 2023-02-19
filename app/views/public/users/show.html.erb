@@ -1,65 +1,68 @@
-<h3><%= @user.last_name %>
-    <%= @user.first_name %>さんの会員詳細</h3>
-<table style="table">
-    <tr>
-        <th>
-            <p>氏名</p>
-        </th>
-        <td>
-            <p><%= @user.last_name %>
-               <%= @user.first_name %></p>
-        </td>
-        <td><%if @user == current_user %>
-                <%= link_to "編集する", edit_user_path, class:"btn btn-sm btn-success" %>
-            <% end %>
-        </td>
-        <td>
-            <%= link_to "いいね一覧",favorites_user_path(@user), class:"btn btn-sm btn-primary" %>
-        </td>
-    </tr>
-    
-    <tr>
-        <th>
-            <p>フォロー数</p>
-        </th>
-        <td>
-            <p><%= @user.followings.count %></p>
-        </td>
-    </tr>
-    
-    <tr>
-        <th>
-            <p>フォロワー数</p>
-        </th>
-        <td>
-            <p><%= @user.followers.count %></p>
-        </td>
-    </tr>
-</table>
-
-
-<h3><%= @user.last_name %>
-    <%= @user.first_name %>さんの投稿一覧</h3>
-<table class='table'>
-        <thead>
+<div class="container">
+   <h3><%= @user.last_name %><%= @user.first_name %>さんの会員詳細</h3>
+  <div class="row">
+        <table style="table">
             <tr>
-                <th>店名</th>
-                <th>いいね</th>
-                <th>口コミ</th>
-                <th>コメント</th>
+                <th>
+                    <p>氏名</p>
+                </th>
+                <td>
+                    <p><%= @user.last_name %>
+                       <%= @user.first_name %></p>
+                </td>
+                <td><%if @user == current_user %>
+                        <%= link_to "編集する", edit_user_path, class:"btn btn-sm btn-success" %>
+                    <% end %>
+                </td>
+                <td>
+                    <%= link_to "いいね一覧",favorites_user_path(@user), class:"btn btn-sm btn-primary" %>
+                </td>
             </tr>
-        </thead>
-        <tbody>
-            <% @user.posts.each do |post_content| %>
+            
             <tr>
-                <td><%= link_to post_content.store_name, post_path(post_content) %></td>
-                    <td id="favorite_buttons_<%= post_content.id %>">
-                    <%= render "public/favorites/favorite", post_content: post_content %>
-                    </td>
-                
-                <td><%= post_content.review %></td>
-                <td>コメント数:<%= post_content.comments.count %></td>
+                <th>
+                    <p>フォロー数</p>
+                </th>
+                <td>
+                    <p><%= @user.followings.count %></p>
+                </td>
             </tr>
-            <% end %>
-        </tbody>
-    </table>
+            
+            <tr>
+                <th>
+                    <p>フォロワー数</p>
+                </th>
+                <td>
+                    <p><%= @user.followers.count %></p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        <h3><%= @user.last_name %>
+            <%= @user.first_name %>さんの投稿一覧</h3>
+        <table class='table'>
+                <thead>
+                    <tr>
+                        <th>店名</th>
+                        <th>いいね</th>
+                        <th>口コミ</th>
+                        <th>コメント</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @user.posts.each do |post_content| %>
+                    <tr>
+                        <td><%= link_to post_content.store_name, post_path(post_content) %></td>
+                            <td id="favorite_buttons_<%= post_content.id %>">
+                            <%= render "public/favorites/favorite", post_content: post_content %>
+                            </td>
+                        
+                        <td><%= post_content.review %></td>
+                        <td>コメント数:<%= post_content.comments.count %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+        </table>
+    </div>
+</div>
