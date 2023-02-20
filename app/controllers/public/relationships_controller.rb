@@ -1,11 +1,14 @@
 class Public::RelationshipsController < ApplicationController
   #フォローする時
   def create
+    @user = User.find(params[:user_id])
     current_user.follow(params[:user_id])
   end
   
   #フォロー外す時
   def destroy
+    # byebug
+    @user = User.find(params[:user_id])
     current_user.unfollow(params[:user_id])
   end
   

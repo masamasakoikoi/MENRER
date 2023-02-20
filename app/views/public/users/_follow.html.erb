@@ -1,6 +1,18 @@
-
-<% if current_user.following?(user) %>
-    <%= link_to "フォロー解除", user_relationships_path(user.id), method: :delete, class: 'btn btn-danger btn-sm',remote: true %>
-<% else %>
-    <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: 'btn btn-primary btn-sm',remote: true %>
-<% end %>
+<%# if current_user.following?(user) %>
+    <%#= link_to "フォロー解除", user_relationships_path(user.id), method: :delete, class: 'btn btn-danger btn-sm',remote: true %>
+<%# else %>
+    <%#= link_to "フォローする", user_relationships_path(user.id), method: :post, class: 'btn btn-primary btn-sm',remote: true %>
+<%# end %>
+<div id="follow-ajax-<%= user.id %>">
+  <% if current_user.following?(user) %>
+    <%= form_with url: user_relationships_path(user.id), local: false,method: :delete do |f| %>
+      <%= hidden_field_tag :follow_id, user.id %>
+      <%= f.submit 'フォロー解除', class: 'btn btn-danger btn-sm' %>
+    <% end %>
+  <% else %>
+    <%= form_with url: user_relationships_path(user.id), local: false do |f| %>
+      <%= hidden_field_tag :follow_id, user.id %>
+      <%= f.submit 'フォローする', class: 'btn btn-primary btn-sm' %>
+    <% end %>
+  <% end %>
+</div>

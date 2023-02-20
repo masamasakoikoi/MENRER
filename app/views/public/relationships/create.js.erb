@@ -1,1 +1,1 @@
-  $(".follow-ajax").html("<%= j(render 'public/users/follow', user: user) %>");
+  $("#follow-ajax-<%= @user.id %>").html("<%= j(render 'public/users/follow', user: @user) %>");
