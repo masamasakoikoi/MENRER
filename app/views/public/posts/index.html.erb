@@ -21,8 +21,8 @@
                 <thead>
                     <tr>
                         <th>店名</th>
-                        <th>いいね</th>
-                        <th>口コミ</th>
+                        <th>お気に入り</th>
+                        <th>評価</th>
                         <th>コメント</th>
                     </tr>
                 </thead>
@@ -33,7 +33,23 @@
                             <td id="favorite_buttons_<%= post_content.id %>">
                             <%= render "public/favorites/favorite", post_content: post_content %>
                             </td>
-                        <td><%= post_content.review %></td>
+                        <td>
+                            <div id="star-rate<%= post_content.id %>"></div>
+                            <script>
+                                $('#star-rate<%= post_content.id %>').empty(); 
+                                var elem = document.getElementById('star-rate<%= post_content.id %>');
+                                console.log(elem);
+                                var opt = { 
+                                    size     : 36,
+                                    starOn: "<%= asset_path('star-on.png') %>",
+                                    starOff: "<%= asset_path('star-off.png') %>",
+                                    scoreName: 'post[rate]',
+                                    readOnly: true,
+                                    score: <%= post_content.rate %>
+                                  };
+                                  raty(elem,opt);
+                            </script>
+                        </td>
                         <td>コメント数:<%= post_content.comments.count %></td>
                         <% end %>
                     </tr>

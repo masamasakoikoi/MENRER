@@ -20,12 +20,6 @@ window.raty = function(elem,opt){
     return raty;
 }
 
-require("@rails/ujs").start()
-require("turbolinks").start()
-require("@rails/activestorage").start()
-require("channels")
-
-
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

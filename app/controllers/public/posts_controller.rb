@@ -3,8 +3,8 @@ class Public::PostsController < ApplicationController
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def index
-    @comment = Comment.all
-    @q = Post.ransack(params[:q])
+    # @comment = Comment.all
+    @q = Post.includes(:favorite_users).includes(:comments).ransack(params[:q])
     @posts =  @q.result.page(params[:page]).per(10)
   end
 
@@ -50,7 +50,7 @@ class Public::PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:store_name, :post_code, :address, :regular_holiday, :review, :image, genre_ids: [])
+    params.require(:post).permit(:store_name, :post_code, :address, :regular_holiday, :review, :image, :rate, genre_ids: [])
   end
   
   def configure_permitted_parameters

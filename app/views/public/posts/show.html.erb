@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-8">
             <h1>投稿詳細</h1>
             <table style="table">
                 <tr>
@@ -69,18 +69,18 @@
                 
                 <tr>
                     <th>
-                        <p>評価：</p>
+                        評価：
                     </th>
                     <td>
-                        <div id="star-rate<%= @post%>"></div>    
+                        <div id="star-rate"></div>
                         <script>
-                            var elem = document.getElementById('star-rate<%= @post%>');
+                            var elem = document.getElementById('star-rate');
                             console.log(elem)
                             var opt = {  
                                 size     : 36,
                                 starOn: "<%= asset_path('star-on.png') %>",
                                 starOff: "<%= asset_path('star-off.png') %>",
-                                scoreName: 'comment[rate]',
+                                scoreName: 'post[rate]',
                                 readOnly: true,
                                 score: <%= @post.rate %>
                               };
@@ -91,10 +91,10 @@
                 
                 <tr>
                     <th>
-                        <p>口コミ：</p>
+                        <br><p>口コミ：</p>
                     </th>
                     <td>
-                        <p>
+                        <br><p>
                         <%= @post.review %>
                         </p>
                     </td>
@@ -109,7 +109,7 @@
             
             <div id="comments-area"><%= render "public/posts/comment",posts: @post,comments: @comments%></div>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-4">
             <% if @post.image.attached? %>
                 <%= image_tag @post.image, size: "400x400" %>
             <% else %>
