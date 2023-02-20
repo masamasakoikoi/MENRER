@@ -11,22 +11,22 @@
                 <%= comment.post_comment %>
             </td>
             
-            <td>
-                <div id="star-rate<%= comment.id%>"></div>    
-                <script>
-                    var elem = document.getElementById('star-rate<%= comment.id%>');
-                    console.log(elem)
-                    var opt = {  
-                        size     : 36,
-                        starOn: "<%= asset_path('star-on.png') %>",
-                        starOff: "<%= asset_path('star-off.png') %>",
-                        scoreName: 'comment[rate]',
-                        readOnly: true,
-                        score: <%= comment.rate %>
-                      };
-                      raty(elem,opt);
-                </script>
-            </td>
+            <!--<td>-->
+            <!--    <div id="star-rate<%#= comment.id%>"></div>    -->
+            <!--    <script>-->
+            <!--        var elem = document.getElementById('star-rate<%#= comment.id%>');-->
+            <!--        console.log(elem)-->
+            <!--        var opt = {  -->
+            <!--            size     : 36,-->
+            <!--            starOn: "<%#= asset_path('star-on.png') %>",-->
+            <!--            starOff: "<%#= asset_path('star-off.png') %>",-->
+            <!--            scoreName: 'comment[rate]',-->
+            <!--            readOnly: true,-->
+            <!--            score: <%#= comment.rate %>-->
+            <!--          };-->
+            <!--          raty(elem,opt);-->
+            <!--    </script>-->
+            <!--</td>-->
             
             <td>
                 <% if comment.user == current_user %>
@@ -46,12 +46,12 @@
         <%= f.submit "送信" %>
         
 <!--評価フォーム-->
-            <div id="star">
-                <%= f.label :rate,'評価' %>
-                <%= f.hidden_field :rate, id: :review_star %>
-            </div>
+        <!--    <div id="star">-->
+        <!--        <%#= f.label :rate,'評価' %>-->
+        <!--        <%#= f.hidden_field :rate, id: :review_star %>-->
+        <!--    </div>-->
             
-        <%= render "public/posts/rate",posts: @post,comments: @comments%>
+        <!--<%#= render "public/posts/rate",posts: @post,comments: @comments%>-->
         
     <% end %>
 </div>

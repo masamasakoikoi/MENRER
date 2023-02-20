@@ -6,7 +6,7 @@
         <th>
           <p>店名</p>
         </th>
-        <td valign = "top">
+        <td>
           <p style="padding-left: 30px;"><%= f.text_field :store_name, autofocus: true %></p>
         </td>
       </tr>
@@ -15,7 +15,7 @@
         <th>
           <p>郵便番号</p>
         </th>
-        <td valign = "top">
+        <td>
           <p style="padding-left: 30px;"><%= f.text_field :post_code %></p>
         </td>
       </tr>
@@ -24,7 +24,7 @@
         <th>
           <p>住所</p>
         </th>
-        <td valign = "top">
+        <td>
           <p style="padding-left: 30px;"><%= f.text_field :address %></p>
         </td>
       </tr>
@@ -33,7 +33,7 @@
         <th>
           <p>ジャンル</p>
         </th>
-        <td valign = "top">
+        <td>
           <p style="padding-left: 30px;"><div class="check_box">
                     <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :genre_name) do |genre| %>
                      <div class='form-check'>
@@ -52,7 +52,7 @@
         <th>
           <p>定休日</p>
         </th>
-        <td valign = "top">
+        <td>
           <p style="padding-left: 30px;"><%= f.text_field :regular_holiday %></p>
         </td>
       </tr>
@@ -61,8 +61,24 @@
         <th>
           <p>口コミ</p>
         </th>
-        <td valign = "top">
+        <td>
           <p style="padding-left: 30px;"><%= f.text_field :review %></p>
+        </td>
+      </tr>
+      
+      <tr>
+        <th>
+          <p>
+            <div id="star">
+              <%= f.label :rate,'評価' %>
+              <%= f.hidden_field :rate, id: :post_rate %>
+            </div>
+          </p>
+        </th>
+        <td>
+          <p style="padding-left: 30px;">
+            <%= render "public/posts/rate",posts: @post %>
+          </p>
         </td>
       </tr>
       
@@ -70,7 +86,7 @@
         <th>
           <p>店舗画像</p>
         </th>
-        <td valign = "top">
+        <td>
           <p style="padding-left: 30px;"><%= f.file_field :image, accept: "image/*" %></p>
         </td>
       </tr>
