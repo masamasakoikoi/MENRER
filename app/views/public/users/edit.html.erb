@@ -1,4 +1,4 @@
- <div class="container p-3">
+ <div class="container p-2">
     <h4><span style = "background-color: #EEE; padding: 0 20px;">会員情報編集</span></h4>
       <%= form_with model:@user,url: user_path, method: :patch do |f| %>
        <table style="margin-left: 30px;">
@@ -7,10 +7,10 @@
             <p>名前</p>
           </th>
           <td valign = "top">
-            <p>（姓）<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %></p>
+            <p style="padding-left:15px;">（姓）<%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %></p>
           </td>
           <td valign = "top">
-            <p>（名）<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></p>
+            <p style="padding-left:15px;">（名）<%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></p>
           </td>
         </tr>
         
@@ -19,10 +19,10 @@
             <p><%= f.label :"フリガナ" %></p>
           </th>
           <td valign = "top">
-            <p style="padding-left: 10px;">（セイ）<%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %></p>
+            <p>（セイ）<%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %></p>
           </td>
           <td valign = "top">
-            <p style="padding-left: 10px;">（メイ）<%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %></p>
+            <p>（メイ）<%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %></p>
           </td>
         </tr>
         
@@ -31,13 +31,13 @@
             <p><%= f.label :"メールアドレス" %></p>
           </th>
           <td valign = "top">
-            <p style="padding-left: 30px;"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
+            <p style="padding-left:63px;"><%= f.email_field :email, autofocus: true, autocomplete: "email" %></p>
           </td>
         </tr>
         
         <tr>
           <th></th>
-          <td>
+          <td style="padding-left:63px;">
             <%= f.submit "編集内容を保存" %>
           </td>
         </tr>

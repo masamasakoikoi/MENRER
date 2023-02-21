@@ -68,17 +68,12 @@
       
       <tr>
         <th>
-          <p>
-            <div id="star">
-              <%= f.label :rate,'評価' %>
-              <%= f.hidden_field :rate, id: :post_rate %>
-            </div>
-          </p>
+          <p>評価</p>
         </th>
-        <td>
-          <p style="margin-right: 30px;">
+        <td style="padding-left: 30px;">
+            <div id="star">
+            </div>
             <%= render "public/posts/rate",posts: @post %>
-          </p>
         </td>
       </tr>
       

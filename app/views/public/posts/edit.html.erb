@@ -65,6 +65,18 @@
           <p style="padding-left: 30px;"><%= f.text_field :review,autocomplete: "review" %></p>
         </td>
       </tr>
+
+       <tr>
+        <th>
+            評価
+        </th>
+        <td>
+          <p style="margin-right: 30px;">
+            <div id="star"></div>
+            <%= render "public/posts/rate",posts: @post %>
+          </p>
+        </td>
+      </tr>
       
       <tr>
         <th>

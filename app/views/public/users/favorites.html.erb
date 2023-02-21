@@ -1,23 +1,27 @@
-<h2><%= @user.last_name %>
-    <%= @user.first_name %>さんのいいね！した投稿一覧</h2>
-    <table class='table'>
-        <thead>
-            <tr>
-                <th>店名</th>
-                <th>いいね</th>
-                <th>口コミ</th>
-                <th>コメント</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @favorite_posts.each do |post_content| %>
-            <tr>
-                <td><%= link_to post_content.store_name, post_path(post_content) %>
-                    </td>
-                <td>❤︎ <%= post_content.favorites.count %></td>
-                <td><%= post_content.review%></td>
-                <td><%= post_content.comments.count %></td>
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
+<div class="container">
+    <div class="row">
+    <h2><%= @user.last_name %>
+        <%= @user.first_name %>さんのいいね！した投稿一覧</h2>
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>店名</th>
+                    <th>いいね</th>
+                    <th>口コミ</th>
+                    <th>コメント</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @favorite_posts.each do |post_content| %>
+                <tr>
+                    <td><%= link_to post_content.store_name, post_path(post_content) %>
+                        </td>
+                    <td>❤︎ <%= post_content.favorites.count %></td>
+                    <td><%= post_content.review%></td>
+                    <td><%= post_content.comments.count %></td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
