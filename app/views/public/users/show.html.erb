@@ -10,7 +10,7 @@
                     <p><%= @user.last_name %>
                        <%= @user.first_name %></p>
                 </td>
-                <td><%if @user == current_user %>
+                <td style="padding-left:30px;"><%if @user == current_user %>
                         <%= link_to "編集する", edit_user_path, class:"btn btn-sm btn-success" %>
                     <% end %>
                 </td>
