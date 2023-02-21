@@ -10,8 +10,6 @@ class User < ApplicationRecord
       user.first_name = "太郎"
       user.last_name_kana = "ゲスト"
       user.first_name_kana = "タロウ"
-      
-      # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
       # 例えば name を入力必須としているならば， user.name = "ゲスト" なども必要
     end
   end

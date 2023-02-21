@@ -24,9 +24,9 @@ Rails.application.routes.draw do
   
     resources :posts ,only:[:index]
     
-    resources :users ,only:[:index]
-    get 'users/unsubscribe'
-    get 'users/status'
+    resources :users ,only:[:index,:destroy]
+    # get 'users/unsubscribe'
+    # get 'users/status'
   end
   
   
@@ -50,7 +50,7 @@ Rails.application.routes.draw do
       member do
         get :favorites
       end
-      get 'users/unsubscribe'
+      # get 'users/unsubscribe'
       
       
       
