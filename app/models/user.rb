@@ -26,7 +26,11 @@ class User < ApplicationRecord
   has_many :followings, through: :user_relationships, source: :following
   has_many :followers, through: :reverse_of_user_relationships, source: :follower
   
-  # validates :
+  validates :last_name, presence: true, length:{ in:1..20}
+  validates :first_name, presence: true, length:{ in:1..20}
+  validates :last_name_kana, presence: true, length:{ in:1..20}
+  validates :first_name_kana, presence: true, length:{ in:1..20}
+  
   
   #フォローした時の処理
   def follow(user_id)

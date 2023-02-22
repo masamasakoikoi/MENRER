@@ -7,11 +7,12 @@ class Post < ApplicationRecord
     belongs_to :user
     has_many :comments, dependent: :destroy
     
-    validates :store_name,presence: true
-    validates :post_code,presence: true
-    validates :address,presence: true
-    validates :regular_holiday,presence: true
-    validates :review,presence: true
+    validates :store_name,presence: true, length:{ in:1..20}
+    validates :post_code,presence: true, length:{ in:1..10}
+    validates :address,presence: true, length:{ in:1..30}
+    validates :regular_holiday,presence: true, length:{ in:1..20}
+    validates :review,presence: true, length:{ in:1..30}
+    validates :rate,presence: true
     
     def favorited?(user)
         favorite_users.include?(user)
