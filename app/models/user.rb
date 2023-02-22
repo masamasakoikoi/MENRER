@@ -26,6 +26,8 @@ class User < ApplicationRecord
   has_many :followings, through: :user_relationships, source: :following
   has_many :followers, through: :reverse_of_user_relationships, source: :follower
   
+  # validates :
+  
   #フォローした時の処理
   def follow(user_id)
     user_relationships.create(following_id: user_id)
