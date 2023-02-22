@@ -3,8 +3,8 @@
   <div class="row">
     <%= search_form_for @q do |f| %>
       <%= f.search_field :last_name_or_first_name_cont,placeholder: "会員検索" %>
-    <%= f.submit %>
-    <%= link_to '一覧を出す', users_path %>
+      <%= f.submit %>
+      <%= link_to '一覧を出す', users_path %>
     <% end %>
   </div>
   <div class="row">
@@ -22,11 +22,15 @@
               <tr>
                 <td>氏名：
                   <%= link_to user_path(user) do %>
-                  <%= user.last_name %><%= user.first_name %>
+                    <%= user.last_name %><%= user.first_name %>
                   <% end %>
                   </td>
-                <td><%= link_to user.followings.count,user_followings_path(user) %></td>
-                <td><%= link_to user.followers.count,user_followers_path(user) %></td>
+                <td id="following-count-<%= user.id %>">
+                  <%= link_to user.followings.count,user_followings_path(user) %>
+                </td>
+                <td id="follower-count-<%= user.id %>">
+                  <%= link_to user.followers.count,user_followers_path(user) %>
+                </td>
                 <td>
                   <% unless user == current_user %>
                   <div class="follow-ajax">
