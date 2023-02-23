@@ -12,7 +12,6 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = Comment.new
     @user = @post.user
-    
   end
 
   def new
