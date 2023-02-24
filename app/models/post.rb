@@ -8,10 +8,10 @@ class Post < ApplicationRecord
     has_many :comments, dependent: :destroy
     
     validates :store_name,presence: true, length:{ in:1..20}
-    validates :post_code,presence: true, length:{ in:1..10}
+    # validates :post_code,presence: true, length:{ in:1..10}
     validates :address,presence: true, length:{ in:1..30}
     validates :regular_holiday,presence: true, length:{ in:1..20}
-    validates :review,presence: true, length:{ in:1..30}
+    # validates :review,presence: true, length:{ in:1..100}
     validates :rate,presence: true
     
     def favorited?(user)
