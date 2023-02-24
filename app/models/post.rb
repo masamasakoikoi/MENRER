@@ -7,10 +7,10 @@ class Post < ApplicationRecord
     belongs_to :user
     has_many :comments, dependent: :destroy
     
-    validates :store_name,presence: true, length:{ in:1..20}
+    validates :store_name,presence: true, length:{ in:1..50}
     # validates :post_code,presence: true, length:{ in:1..10}
-    validates :address,presence: true, length:{ in:1..30}
-    validates :regular_holiday,presence: true, length:{ in:1..20}
+    validates :address,presence: true, length:{ in:1..50}
+    # validates :regular_holiday,presence: true, length:{ in:1..20}
     # validates :review,presence: true, length:{ in:1..100}
     validates :rate,presence: true
     
