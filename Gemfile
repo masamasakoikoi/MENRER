@@ -60,12 +60,12 @@ gem 'devise'
 gem 'ransack'
 gem 'jquery-rails'
 
-gem 'dotenv-rails'
+# gem 'dotenv-rails'
 group :production do
-  gem 'mysql2'
+  # gem 'mysql2'
 end
 
-gem "net-smtp"
-gem "net-pop"
-gem "net-imap"
+# gem "net-smtp"
+# gem "net-pop"
+# gem "net-imap"
 gem 'kaminari'
