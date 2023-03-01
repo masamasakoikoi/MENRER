@@ -288,7 +288,6 @@ DEPENDENCIES
   rails (~> 6.1.7, >= 6.1.7.2)
   ransack
   sass-rails (>= 6)
-  sassc (~> 2.4.0)
   selenium-webdriver (>= 4.0.0.rc1)
   spring
   sqlite3 (~> 1.4)
