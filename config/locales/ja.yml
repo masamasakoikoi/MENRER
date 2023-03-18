@@ -1,13 +1,16 @@
 ja:
   activerecord:
     attributes:
-      posts:
+      post:
         store_name: 店名
         address: 住所
         rate: 評価
+      user:
+        last_name: 苗字
+        first_name: 名前
+        last_name_kana: 苗字フリガナ
+        first_name_kana: 名前フリガナ
 
         
   activemodel:   # Formオブジェクトを用いた場合
      attributes:
-       order_object:
-         post_code: 郵便番号
