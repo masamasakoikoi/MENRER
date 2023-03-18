@@ -1,9 +1,9 @@
 <% if post_content.favorited?(current_user) %>
     <%= link_to post_favorites_path(post_content.id), method: :delete,remote: true do %>
-        <span>❤ <%= post_content.favorites.count %></span>
+        <span><i class="fas fa-heart unlike-btn"></i><%= post_content.favorites.count %></span>
     <% end %>
 <% else %>
     <%= link_to post_favorites_path(post_content.id), method: :post,remote: true do %>
-        <span>♡ <%= post_content.favorites.count %>︎</span>
+        <span><i class="far fa-heart like-btn"></i><%= post_content.favorites.count %>︎</span>
     <% end %>
 <% end %>

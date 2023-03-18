@@ -1,12 +1,12 @@
  <div class="container">
      <h1>投稿一覧</h1>
      <div class="row">
-            <!--ransack店名検索-->
+        <!--店名をransackで検索-->
         <%= search_form_for(@q, url:posts_path) do |f| %>
-            <%= f.text_field :store_name_or_genres_genre_name_cont, placeholder: '店名検索' %>
+            <%= f.text_field :store_name_cont, placeholder: '店名検索' %>
             <%= f.submit '検索', class: 'btn btn-success btn-sm' %>
         <% end %>
-        
+        <!--ジャンル名をセレクトボックスで検索-->
         <%= search_form_for(@q, url:posts_path, local: true) do |f| %>
             <%= f.label :genres_genre_name, 'ジャンル検索'%>
             <%= f.select :genres_id_eq, options_from_collection_for_select(Genre.all, :id, :genre_name,1) %>

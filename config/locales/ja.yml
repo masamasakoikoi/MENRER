@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    attributes:
+      posts:
+        store_name: 店名
+        address: 住所
+        rate: 評価
+
+        
+  activemodel:   # Formオブジェクトを用いた場合
+     attributes:
+       order_object:
+         post_code: 郵便番号
