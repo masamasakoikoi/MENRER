@@ -23,8 +23,8 @@
                 <th>
                     <p>フォロー数</p>
                 </th>
-                <td>
-                    <p><%= @user.followings.count %></p>
+                <td id="following-count-<%= @user.id %>">
+                  <p><%= link_to @user.followings.count,user_followings_path(@user) %></p>
                 </td>
             </tr>
             
@@ -32,8 +32,8 @@
                 <th>
                     <p>フォロワー数</p>
                 </th>
-                <td>
-                    <p><%= @user.followers.count %></p>
+                <td id="follower-count-<%= @user.id %>">
+                  <p><%= link_to @user.followers.count,user_followers_path(@user) %></p>
                 </td>
             </tr>
         </table>
