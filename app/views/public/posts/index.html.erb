@@ -20,16 +20,25 @@
             <table class='table'>
                 <thead>
                     <tr>
+                        <th></th>
                         <th>店名</th>
                         <th>お気に入り</th>
                         <th>評価</th>
-                        <th>コメント</th>
+                        <th>投稿日時</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% @posts.each do |post_content| %>
                     <tr>
-                        <td><%= link_to post_content.store_name, post_path(post_content) %></td>
+                        <td>
+                            <% if post_content.image.attached? %>
+                                <%= image_tag post_content.image, size: "80x80" %>
+                            <% else %>
+                                <%= image_tag 'no_image.jpg',size:"80x80" %>
+                            <% end %>
+                        </td>
+                        <td>
+                            <%= link_to post_content.store_name, post_path(post_content) %></td>
                             <td id="favorite_buttons_<%= post_content.id %>">
                             <%= render "public/favorites/favorite", post_content: post_content %>
                             </td>
@@ -39,7 +48,7 @@
                                 $('#star-rate<%= post_content.id %>').empty(); 
                                 var elem = document.getElementById('star-rate<%= post_content.id %>');
                                 console.log(elem);
-                                var opt = { 
+                                var opt = {
                                     size     : 36,
                                     starOn: "<%= asset_path('star-on.png') %>",
                                     starOff: "<%= asset_path('star-off.png') %>",
@@ -50,7 +59,9 @@
                                   raty(elem,opt);
                             </script>
                         </td>
-                        <td>コメント数:<%= post_content.comments.count %></td>
+                        <td>
+                            <%= l post_content.created_at, format: :short %>
+                        </td>
                         <% end %>
                     </tr>
                 </tbody>

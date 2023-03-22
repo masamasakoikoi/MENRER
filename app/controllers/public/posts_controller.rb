@@ -5,7 +5,7 @@ class Public::PostsController < ApplicationController
   def index
     # @comment = Comment.all
     @q = Post.includes(:favorite_users).includes(:comments).ransack(params[:q])
-    @posts =  @q.result.page(params[:page]).per(10)
+    @posts =  @q.result.page(params[:page]).per(5).order(created_at: :desc)
   end
 
   def show

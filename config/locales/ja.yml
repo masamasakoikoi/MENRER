@@ -14,3 +14,8 @@ ja:
         
   activemodel:   # Formオブジェクトを用いた場合
      attributes:
+  
+  ja:
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
