@@ -1,5 +1,5 @@
 <% if @users.exists? %>
-<h2>フォローしているユーザー</h2>
+<h2><%= @user.last_name %><%= @user.first_name %>のフォロー一覧</h2>
         <table class="table">
             <thead>
                 <tr>
