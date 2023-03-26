@@ -1,23 +1,27 @@
-<% if @users.exists? %>
-<h2><%= @user.last_name %><%= @user.first_name %>のフォロー一覧</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>氏名</th>
-                    <th>フォロー</th>
-                    <th>フォロワー</th>
-                </tr>
-            </thead>
-            <tbody>
-            <% @users.each do |user| %>
-                <tr>
-                    <td><%= user.last_name %><%= user.first_name %></td>
-                    <td><%= user.followings.count %></td>
-                    <td><%= user.followers.count %></td>
-                </tr>
-            <% end %>
-            </tbody>
-        </table>
-<% else %>
-    <p>ユーザーはいません</p>
-<% end %>
+<div class="container">
+  <div class="row">
+        <% if @users.exists? %>
+        <h2><%= @user.last_name %><%= @user.first_name %>のフォロー一覧</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>氏名</th>
+                            <th>フォロー</th>
+                            <th>フォロワー</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <% @users.each do |user| %>
+                        <tr>
+                            <td><%= user.last_name %><%= user.first_name %></td>
+                            <td><%= user.followings.count %></td>
+                            <td><%= user.followers.count %></td>
+                        </tr>
+                    <% end %>
+                    </tbody>
+                </table>
+        <% else %>
+            <p>ユーザーはいません</p>
+        <% end %>
+    </div>
+</div>
