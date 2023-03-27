@@ -1,17 +1,19 @@
  <div class="container">
      <h1>投稿一覧</h1>
      <div class="row">
-        <!--店名をransackで検索-->
+        <!--ransack検索-->
         <%= search_form_for(@q, url:posts_path) do |f| %>
             <%= f.text_field :store_name_cont, placeholder: '店名検索' %>
             <%= f.submit '検索', class: 'btn btn-success btn-sm' %>
         <% end %>
-        <!--ジャンル名をセレクトボックスで検索-->
+        
+        <!--セレクトボックス検索-->
         <%= search_form_for(@q, url:posts_path, local: true) do |f| %>
             <%= f.label :genres_genre_name, 'ジャンル検索'%>
             <%= f.select :genres_id_eq, options_from_collection_for_select(Genre.all, :id, :genre_name,1) %>
             <%= f.button '検索', class: 'btn btn-success btn-sm' %>
         <% end %>
+        
         <div style="margin-left :10px">
         <%= link_to '一覧を出す', posts_path, class: 'btn btn-secondary btn-sm' %>
         </div>
@@ -37,11 +39,16 @@
                                 <%= image_tag 'no_image.jpg',size:"80x80" %>
                             <% end %>
                         </td>
+                        
                         <td>
-                            <%= link_to post_content.store_name, post_path(post_content) %></td>
-                            <td id="favorite_buttons_<%= post_content.id %>">
+                            <%= link_to post_content.store_name, post_path(post_content) %>
+                        </td>
+                        
+                        <td id="favorite_buttons_<%= post_content.id %>">
                             <%= render "public/favorites/favorite", post_content: post_content %>
-                            </td>
+                        </td>
+                        
+                        <!--ratyで5段階評価表示-->
                         <td>
                             <div id="star-rate<%= post_content.id %>"></div>
                             <script>
@@ -59,13 +66,16 @@
                                   raty(elem,opt);
                             </script>
                         </td>
+                        
                         <td>
                             <%= l post_content.created_at, format: :short %>
                         </td>
+                        
                         <% end %>
                     </tr>
                 </tbody>
             </table>
     </div>
+    <!--ページネーション-->
     <div style="text-align:center;"><p><%= paginate @posts %></p></div>
 </div>    

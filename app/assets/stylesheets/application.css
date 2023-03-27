@@ -28,3 +28,10 @@
  color: #e54747;
  margin-left: 20px;
  }
+ 
+ .show-img{
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+  object-fit: contain;
+ }

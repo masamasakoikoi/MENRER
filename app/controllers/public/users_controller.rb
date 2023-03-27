@@ -1,7 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!,except:[:top]
-  before_action :configure_permitted_parameters, if: :devise_controller?
-
+ 
   def index
     @q = User.ransack(params[:q])
     @users = @q.result.page(params[:page]).per(10)
@@ -37,7 +36,4 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email)
   end
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana])
-  end
 end

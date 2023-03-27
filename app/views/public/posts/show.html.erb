@@ -122,9 +122,9 @@
         </div>
         <div class="col-md-4">
             <% if @post.image.attached? %>
-                <%= image_tag @post.image, size: "400x400" %>
+                <%= image_tag @post.image, class:"show-img" %>
             <% else %>
-                <%= image_tag 'no_image.jpg',size:"400x400" %>
+                <%= image_tag 'no_image.jpg', class:"show-img" %>
             <% end %>
         </div>
     </div>

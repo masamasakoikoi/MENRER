@@ -16,6 +16,10 @@
                     <%= link_to "削除", post_comment_path(comment.post,comment), method: :delete, class:"btn btn-sm btn-danger" ,remote: true,data: {confirm: "本当に削除しますか?"} %>
                 <% end %>
             </td>
+            
+            <td>
+                <%= l comment.created_at, format: :short %>
+            </td>
         </tr>
         <% end %>
     </table>

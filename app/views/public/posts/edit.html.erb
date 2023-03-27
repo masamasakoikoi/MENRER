@@ -10,6 +10,7 @@
   <% end %>
   <%= form_with model:@post, url: post_path,method: :patch do |f| %>
     <table style="margin-left: 30px;">
+      
       <tr>
         <th>
           <p>店名</p>
@@ -99,6 +100,7 @@
         <th></th>
         <td><p style="padding-left: 30px;"><%= f.submit "編集する" %></p></td>
       </tr>
+      
     </table>
   <% end %>
 </div>

@@ -1,17 +1,11 @@
 <div class="container p-3">
   <h4><span style = "background-color: #EEE; padding: 0 20px;">新規投稿</span></h4>
-  <%# if @post.errors.any? %>
-    <%#= @post.errors.count %><!--件のエラーが発生しました-->
-    <!--<ul>-->
-      <%# @post.errors.full_messages.each do |message| %>
-        <!--<li><%#= message %></li>
-      <%# end %>
-    <!--</ul>-->
-  <%# end %>
-  　
+
   <%= form_with model: @post, url: posts_path do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
+  
     <table style="margin-left: 30px;">
+      
       <tr>
         <th>
           <p>店名</p>
@@ -100,6 +94,7 @@
         <th></th>
         <td><p style="padding-left: 30px;"><%= f.submit "投稿する" %></p></td>
       </tr>
+      
     </table>
   <% end %>
 </div>
